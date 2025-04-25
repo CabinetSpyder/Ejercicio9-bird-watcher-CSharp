@@ -9,31 +9,50 @@ class BirdCount
 
     public static int[] LastWeek()
     {
-        throw new NotImplementedException("Please implement the (static) BirdCount.LastWeek() method");
+        return [0, 2, 5, 3, 7, 8, 4];
     }
 
     public int Today()
     {
-        throw new NotImplementedException("Please implement the BirdCount.Today() method");
+        return birdsPerDay[birdsPerDay.Length-1];
     }
 
     public void IncrementTodaysCount()
     {
-        throw new NotImplementedException("Please implement the BirdCount.IncrementTodaysCount() method");
+        birdsPerDay[^1] += 1;
     }
 
     public bool HasDayWithoutBirds()
     {
-        throw new NotImplementedException("Please implement the BirdCount.HasDayWithoutBirds() method");
+        bool noBirds = false;
+        foreach(int birdNum in birdsPerDay){
+            if(birdNum == 0){
+                noBirds = true;
+                break;
+            }
+        }
+
+        return noBirds;
     }
 
     public int CountForFirstDays(int numberOfDays)
     {
-        throw new NotImplementedException("Please implement the BirdCount.CountForFirstDays() method");
+        int sum = 0;
+        for(int i = 0; i<numberOfDays; i ++){
+            sum += birdsPerDay[i];
+        }        
+
+        return sum;
     }
 
     public int BusyDays()
     {
-        throw new NotImplementedException("Please implement the BirdCount.BusyDays() method");
+        int totalBusyDays = 0;
+        foreach(int birds in birdsPerDay){
+            if(birds >= 5){
+                totalBusyDays++;
+            }
+        }
+        return totalBusyDays;
     }
 }
